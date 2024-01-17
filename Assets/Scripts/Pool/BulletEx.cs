@@ -3,12 +3,7 @@ using UnityEngine;
 public class BulletEx : MonoBehaviour
 {
     [SerializeField] private float _speed = 0.8f;
-    private int _damage = 1;
-
-    public void Init(int damage, Transform target)
-    {
-        _damage = damage;
-    }
+    [SerializeField] private int _damage = 1;
 
     private void Update()
     {
@@ -17,9 +12,9 @@ public class BulletEx : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.TryGetComponent<ITakeDamage>(out var enemy))
         {
-            other.GetComponent<ITakeDamage>().TakeDamage(_damage);
+            enemy.TakeDamage(_damage);
         }
     }
 }

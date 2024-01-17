@@ -3,13 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 60;
-    private int _damage = 1;
-
-    public void Init(int damage, Transform target)
-    {
-        _damage = damage;
-        ReturnToPool();
-    }
+    [SerializeField] private int _damage = 1;
 
     private void Update()
     {
@@ -18,15 +12,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.TryGetComponent<ITakeDamage>(out var enemy))
         {
-            other.GetComponent<ITakeDamage>().TakeDamage(_damage);
+            enemy.TakeDamage(_damage);
         }
-        ReturnToPool();
     }
-
-    public void ReturnToPool()
-	{
-		gameObject.SetActive(false);
-	}
 }

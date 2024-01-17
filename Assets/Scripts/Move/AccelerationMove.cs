@@ -1,21 +1,24 @@
 using UnityEngine;
 
-internal sealed class AccelerationMove : MoveTransform
+namespace Assets.Scripts.Move
 {
-    private readonly float _acceleration;
-
-    public AccelerationMove(Transform transform, float speed, float acceleration) : base(transform, speed)
+    internal sealed class AccelerationMove : MoveTransform
     {
-        _acceleration = acceleration;
-    }
+        private readonly float _acceleration;
 
-    public void AddAcceleration()
-    {
-        Speed += _acceleration;
-    }
+        public AccelerationMove(Transform transform, float speed, float acceleration) : base(transform, speed)
+        {
+            _acceleration = acceleration;
+        }
 
-    public void RemoveAcceleration()
-    {
-        Speed -= _acceleration;
+        public void AddAcceleration()
+        {
+            Speed += _acceleration;
+        }
+
+        public void RemoveAcceleration()
+        {
+            Speed -= _acceleration;
+        }
     }
 }

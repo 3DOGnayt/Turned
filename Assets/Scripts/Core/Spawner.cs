@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] _enemy;
+    [SerializeField] private GameObject[] _enemy;
+    [SerializeField] private float _spawnZoneLeft;
+    [SerializeField] private float _spawnZoneRight;
+    [SerializeField] private float _spawnZoneHight;
+    [Space]
+    [SerializeField] private float _startSpawn;
+    [SerializeField] private float _repeatSpawn;
 
     private int _random;
-    public float _startSpawn;
-    private float _repeatSpawn;
-    public Vector3 _size;
 
     private void Start()
     {
@@ -16,16 +19,14 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+        _repeatSpawn -= Time.deltaTime;
+
         if (_repeatSpawn <= 0)
         {
-            Vector3 pos = Vector3.zero + new Vector3(Random.Range(-_size.x, _size.x), 14, 0);
+            Vector3 pos = Vector3.zero + new Vector3(Random.Range(-_spawnZoneLeft, _spawnZoneRight), _spawnZoneHight, 0);
             _random = Random.Range(0, _enemy.Length);
             Instantiate(_enemy[_random], pos, Quaternion.identity);
             _repeatSpawn = _startSpawn;
-        }
-        else
-        {
-            _repeatSpawn -= Time.deltaTime;
         }
     }
 }

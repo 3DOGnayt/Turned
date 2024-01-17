@@ -5,20 +5,18 @@ public class Floor : MonoBehaviour, ITakeDamage
     [SerializeField] private int _hp = 10;
 
     private int _damage = 1;
+
     private void Update()
     {
         if (_hp == 0)
-        {
-            Destroy(gameObject);
-        }
+            gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<ITakeDamage>(out var takeDamage))
+        if (other.TryGetComponent<ITakeDamage>(out var enemy))
         {
-            takeDamage.TakeDamage(_damage);
-            _hp -= _damage;
+            enemy.TakeDamage(_damage);
         }
     }
 
