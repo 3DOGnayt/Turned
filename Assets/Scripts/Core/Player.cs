@@ -1,67 +1,71 @@
+using Assets.Scripts.Interfaces;
 using Assets.Scripts.Move;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{   
-    [SerializeField] private float _speed = 10;
-    [SerializeField] private float _acceleration = 10;
-
-    private Rigidbody _rigidbody;
-    private bool _isGrounded;
-
-    private IMove _direction;
-
-    private int _damage = 1;
-
-    private void Start()
+namespace Assets.Scripts.Core
+{
+    public class Player : MonoBehaviour
     {
-        _direction = new AccelerationMove(transform, _speed, _acceleration);
-        _rigidbody = gameObject.GetComponent<Rigidbody>();
-    }
+        [SerializeField] private float _speed = 10;
+        [SerializeField] private float _acceleration = 10;
 
-    private void FixedUpdate()
-    {
-        JumpPlayer();
-    }
+        private Rigidbody _rigidbody;
+        private bool _isGrounded;
 
-    private void Update()
-    {
-        AccelerationPlayer();
-    }
+        private IMove _direction;
 
-    private void AccelerationPlayer()
-    {
-        _direction.Move(Input.GetAxis("Horizontal"), Time.deltaTime);
+        private int _damage = 1;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        private void Start()
         {
-            if (_direction is AccelerationMove accelerationMove)
-                accelerationMove.AddAcceleration();
+            _direction = new AccelerationMove(transform, _speed, _acceleration);
+            _rigidbody = gameObject.GetComponent<Rigidbody>();
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        private void FixedUpdate()
         {
-            if (_direction is AccelerationMove accelerationMove)
-                accelerationMove.RemoveAcceleration();
+            JumpPlayer();
         }
-    }
 
-    private void JumpPlayer()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        private void Update()
         {
-            _isGrounded = false;
-            _rigidbody.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+            AccelerationPlayer();
         }
-    }
 
-    public void OnCollisionEnter(Collision collision) => _isGrounded = true;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<ITakeDamage>(out var takeDamage))
+        private void AccelerationPlayer()
         {
-            takeDamage.TakeDamage(_damage);
+            _direction.Move(Input.GetAxis("Horizontal"), Time.deltaTime);
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if (_direction is AccelerationMove accelerationMove)
+                    accelerationMove.AddAcceleration();
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                if (_direction is AccelerationMove accelerationMove)
+                    accelerationMove.RemoveAcceleration();
+            }
+        }
+
+        private void JumpPlayer()
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+            {
+                _isGrounded = false;
+                _rigidbody.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+            }
+        }
+
+        public void OnCollisionEnter(Collision collision) => _isGrounded = true;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent<ITakeDamage>(out var takeDamage))
+            {
+                takeDamage.TakeDamage(_damage);
+            }
         }
     }
 }

@@ -1,27 +1,31 @@
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 
-public class Floor : MonoBehaviour, ITakeDamage
-{    
-    [SerializeField] private int _hp = 10;
-
-    private int _damage = 1;
-
-    private void Update()
+namespace Assets.Scripts.Core
+{
+    public class Floor : MonoBehaviour, ITakeDamage
     {
-        if (_hp == 0)
-            gameObject.SetActive(false);
-    }
+        [SerializeField] private int _hp = 10;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<ITakeDamage>(out var enemy))
+        private int _damage = 1;
+
+        private void Update()
         {
-            enemy.TakeDamage(_damage);
+            if (_hp == 0)
+                gameObject.SetActive(false);
         }
-    }
 
-    public void TakeDamage(int damage)
-    {
-        _hp -= damage;
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent<ITakeDamage>(out var enemy))
+            {
+                enemy.TakeDamage(_damage);
+            }
+        }
+
+        public void TakeDamage(int damage)
+        {
+            _hp -= damage;
+        }
     }
 }

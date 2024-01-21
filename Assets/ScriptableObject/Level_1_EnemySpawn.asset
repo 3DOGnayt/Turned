@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fced22a0529e4a84b93dc64b28dc39bf, type: 3}
+  m_Name: Level_1_EnemySpawn
+  m_EditorClassIdentifier: 
+  _enemy:
+  - {fileID: -4706127040827678716, guid: 13e7be915489ea14f9ca92bc1788b6f2, type: 3}
+  - {fileID: -5478623711481073607, guid: 35d437afa8784054f977ee85e1d4b586, type: 3}
+  _spawnPosition: {x: 9, y: 12, z: 0}
+  _startSpawn: 1.5
+  _repeatSpawn: 0

@@ -1,32 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+namespace Assets.Scripts.Core
 {
-    [SerializeField] private GameObject[] _enemy;
-    [SerializeField] private float _spawnZoneLeft;
-    [SerializeField] private float _spawnZoneRight;
-    [SerializeField] private float _spawnZoneHight;
-    [Space]
-    [SerializeField] private float _startSpawn;
-    [SerializeField] private float _repeatSpawn;
-
-    private int _random;
-
-    private void Start()
+    [CreateAssetMenu(fileName = "SpawnEnemySettings", menuName = "Settings/EnemySpawn")]
+    public class Spawner : ScriptableObject
     {
-        _repeatSpawn = _startSpawn;
-    }
+        [SerializeField] private List<Enemy> _enemy;
+        [SerializeField] private Vector3 _spawnPosition;
+        [Space]
+        [SerializeField] private float _startSpawn;
+        [SerializeField] private float _repeatSpawn;
 
-    private void Update()
-    {
-        _repeatSpawn -= Time.deltaTime;
-
-        if (_repeatSpawn <= 0)
-        {
-            Vector3 pos = Vector3.zero + new Vector3(Random.Range(-_spawnZoneLeft, _spawnZoneRight), _spawnZoneHight, 0);
-            _random = Random.Range(0, _enemy.Length);
-            Instantiate(_enemy[_random], pos, Quaternion.identity);
-            _repeatSpawn = _startSpawn;
-        }
+        public List<Enemy> Enemy => _enemy;
+        public Vector3 SpawnPosition => _spawnPosition;
+        public float StartSpawn => _startSpawn;
+        public float RepeatSpawn => _repeatSpawn;
     }
 }

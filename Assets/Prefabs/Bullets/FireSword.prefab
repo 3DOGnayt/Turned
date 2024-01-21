@@ -264,10 +264,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4841453956575161952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d40fb5cdb9160469160c3f3636df7a, type: 3}
+  m_Script: {fileID: 11500000, guid: faee5382d387b5d40bc7eb1ca199f1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 20
+  _bullet: {fileID: 4718986249965613012}
+  _speed: 60
+  _damage: 1
+  _lifeTime: 2
 --- !u!1 &5117342914112346229
 GameObject:
   m_ObjectHideFlags: 0

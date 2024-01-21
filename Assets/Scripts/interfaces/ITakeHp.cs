@@ -1,4 +1,7 @@
-public interface ITakeHp 
+namespace Assets.Scripts.Interfaces
 {
-    void TakeHp(int health);
+    public interface ITakeHp
+    {
+        void TakeHp(int health);
+    }
 }

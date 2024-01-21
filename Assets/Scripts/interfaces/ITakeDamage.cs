@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public interface ITakeDamage 
+namespace Assets.Scripts.Interfaces
 {
-    void TakeDamage(int damage);
+    public interface ITakeDamage
+    {
+        void TakeDamage(int damage);
+    }
 }

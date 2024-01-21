@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 186928470}
   - component: {fileID: 1115511732550232660}
   - component: {fileID: 3100197548906288492}
-  - component: {fileID: 4718986249965613012}
+  - component: {fileID: 7699080820795110985}
   m_Layer: 0
   m_Name: BigSword
   m_TagString: Untagged
@@ -218,7 +218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841453956575161952}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 0.15}
   m_Children:
@@ -228,7 +228,7 @@ Transform:
   - {fileID: 5714227929172178319}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!136 &186928470
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8039229, z: 0.28655505}
   m_Center: {x: 0, y: 0.29476577, z: -0.0112606585}
---- !u!114 &4718986249965613012
+--- !u!114 &7699080820795110985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,10 +278,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4841453956575161952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d40fb5cdb9160469160c3f3636df7a, type: 3}
+  m_Script: {fileID: 11500000, guid: e275b35c5ab635c49a1b6c0f5a32eb2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 20
+  _bullet: {fileID: 7699080820795110985}
+  _speed: 60
+  _damage: 1
+  _lifeTime: 2
 --- !u!1 &5117342914112346229
 GameObject:
   m_ObjectHideFlags: 0

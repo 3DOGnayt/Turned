@@ -1,5 +1,8 @@
-public interface IMove 
+namespace Assets.Scripts.Interfaces
 {
-    float Speed { get; }
-    void Move(float horizontal, float deltaTime);
+    public interface IMove
+    {
+        float Speed { get; }
+        void Move(float horizontal, float deltaTime);
+    }
 }
