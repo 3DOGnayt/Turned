@@ -18,3 +18,4 @@ MonoBehaviour:
   _spawnPosition: {x: 9, y: 12, z: 0}
   _startSpawn: 1.5
   _repeatSpawn: 0
+  _enemyCount: 30

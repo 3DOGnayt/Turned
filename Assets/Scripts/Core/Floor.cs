@@ -7,6 +7,8 @@ namespace Assets.Scripts.Core
     {
         [SerializeField] private int _hp = 10;
 
+        public int HealthPoint => _hp;
+
         private int _damage = 1;
 
         private void Update()

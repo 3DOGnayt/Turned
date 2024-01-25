@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Core.Skills;
+﻿using Assets.Scripts.Skills;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

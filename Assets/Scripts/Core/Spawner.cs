@@ -11,10 +11,12 @@ namespace Assets.Scripts.Core
         [Space]
         [SerializeField] private float _startSpawn;
         [SerializeField] private float _repeatSpawn;
+        [SerializeField] private float _enemyCount;
 
         public List<Enemy> Enemy => _enemy;
         public Vector3 SpawnPosition => _spawnPosition;
         public float StartSpawn => _startSpawn;
         public float RepeatSpawn => _repeatSpawn;
+        public float EnemyCount => _enemyCount;
     }
 }

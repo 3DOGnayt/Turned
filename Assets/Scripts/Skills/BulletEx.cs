@@ -2,19 +2,21 @@ using Assets.Scripts.Interfaces;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.Skills
+namespace Assets.Scripts.Skills
 {
-    public class Bullet : MonoBehaviour
+    public class BulletEx : MonoBehaviour
     {
-        [SerializeField] private Bullet _bullet;
-        [SerializeField] private float _speed = 60;
+        [SerializeField] private BulletEx _bullet;
+        [SerializeField] private Transform rotation;
+        [SerializeField] private float _speed = 0.8f;
         [SerializeField] private int _damage = 1;
-        [SerializeField] private int _lifeTime = 2;
+        [SerializeField] private int _lifeTime = 1;
 
         public float Speed => _speed;
 
-        public void SmallBullet(Transform transform)
+        public void ExBullet(Transform transform)
         {
+            rotation.rotation = new Quaternion(0, 0, 0, 0);
             gameObject.transform.position = transform.position;
             StartCoroutine(Fire(_lifeTime));
         }
@@ -24,7 +26,7 @@ namespace Assets.Scripts.Core.Skills
             for (float i = 0; i < time;)
             {
                 i += Time.deltaTime;
-                transform.Translate(Vector3.up * _speed * Time.deltaTime);
+                transform.Rotate(new Vector3(0, 0, -180 * (_speed * Time.deltaTime)));
                 yield return null;
             }
 

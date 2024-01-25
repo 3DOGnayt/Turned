@@ -1,19 +1,19 @@
-﻿using Assets.Scripts.Interfaces;
+using Assets.Scripts.Interfaces;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.Core.Skills
+namespace Assets.Scripts.Skills
 {
-    public class SideBullet : MonoBehaviour
+    public class Bullet : MonoBehaviour
     {
-        [SerializeField] private SideBullet _bullet;
+        [SerializeField] private Bullet _bullet;
         [SerializeField] private float _speed = 60;
         [SerializeField] private int _damage = 1;
         [SerializeField] private int _lifeTime = 2;
 
         public float Speed => _speed;
 
-        public void BigBullet(Transform transform)
+        public void SmallBullet(Transform transform)
         {
             gameObject.transform.position = transform.position;
             StartCoroutine(Fire(_lifeTime));

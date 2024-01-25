@@ -12,11 +12,12 @@ namespace Assets.Scripts.Pool
         [Space(20)]
         [SerializeField] private float _startSpawn;
         [SerializeField] private float _repeatSpawn;
+        [SerializeField] private int _enemyCount;
 
         public PoolEnemy PoolEnemy => _poolEnemy;
 
         private int _random;
-
+        
         private void Awake()
         {
             _poolEnemy.EnemyList = _spawner.Enemy;
@@ -24,11 +25,20 @@ namespace Assets.Scripts.Pool
             _startSpawn = _spawner.StartSpawn;
             _repeatSpawn = _spawner.RepeatSpawn;
 
+            _enemyCount = (int)_spawner.EnemyCount;
+
             _poolEnemy.CreatePool();            
         }
 
         private void Update()
         {
+            SpawnEnemy();
+        }
+
+        private void SpawnEnemy()
+        {
+            if (_enemyCount <= 0) return;
+
             _repeatSpawn -= Time.deltaTime;
 
             if (_repeatSpawn <= 0)
@@ -37,6 +47,7 @@ namespace Assets.Scripts.Pool
                 Vector3 position = Vector3.zero + new Vector3(Random.Range(-_spawnPosition.x, _spawnPosition.x), _spawnPosition.y, 0);
                 _poolEnemy.GetFreeElement(_random).EnemyPosition(position);
                 _repeatSpawn = _startSpawn;
+                _enemyCount -= 1;
             }
         }
     }

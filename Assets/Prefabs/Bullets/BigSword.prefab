@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 7699080820795110985}
-  _speed: 60
+  _speed: 40
   _damage: 1
   _lifeTime: 2
 --- !u!1 &5117342914112346229
