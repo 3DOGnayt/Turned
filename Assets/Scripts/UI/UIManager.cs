@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Pool;
+using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
@@ -9,6 +10,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private SkillCoust _skillTime;
         [Space(20)]
         [SerializeField] private RestartLevel _restartLevel;
+        [SerializeField] private PoolEmenyView _poolEmeny;
 
         private void Awake()
         {
@@ -29,6 +31,7 @@ namespace Assets.Scripts.UI
         {
             CheckFloorHp();
             CheckSkillIcons();
+            CheckEnemyCount();
         }
 
         private void CheckSkillIcons()
@@ -46,6 +49,15 @@ namespace Assets.Scripts.UI
             if (floor.Floor.HealthPoint <= 0)
             {
                 _restartLevel.Panels[0].SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+
+        private void CheckEnemyCount()
+        {
+            if (_poolEmeny.EnemyCount <= 0)
+            {
+                _restartLevel.Panels[1].SetActive(true);
                 Time.timeScale = 0;
             }
         }

@@ -15,6 +15,7 @@ namespace Assets.Scripts.Pool
         [SerializeField] private int _enemyCount;
 
         public PoolEnemy PoolEnemy => _poolEnemy;
+        public int EnemyCount => _enemyCount;
 
         private int _random;
         

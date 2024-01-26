@@ -1153,6 +1153,7 @@ MonoBehaviour:
     _panels:
     - {fileID: 1097549309}
     - {fileID: 141971172}
+  _poolEmeny: {fileID: 34925193}
 --- !u!1 &469143921
 GameObject:
   m_ObjectHideFlags: 0
